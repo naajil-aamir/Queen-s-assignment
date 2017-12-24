@@ -1,0 +1,24 @@
+<div>
+    <div class="header">
+        <center>
+            <h1 class="margin-top-0 main-header">President Donald Trump's Latest CNN News and Tweets</h1>
+        </center>
+        <md-button md-no-ink="" class="md-primary absolute-positioning" ng-click="getDataFromCNN();getDataFromTwitter();"><i class="material-icons my-button-icon">refresh</i></md-button>
+    </div>     
+    <div layout="row">
+        <div class="content-container" flex>
+            <div class="content-header"><h3 class="margin-top-0 margin-bottom-0">Trump Headlines</h3></div>
+            <md-content  class="content-height">
+                <div class="actual-content" ng-class="{visited: row.visited}" ng-repeat = "row in CNN" ng-click="openLink(row)">{{row.Description}}</div>
+            </md-content>
+        </div>
+        <div class="spacer-30"></div>
+        <div class="content-container" flex>
+            <div class="content-header"><h3 class="margin-top-0 margin-bottom-0"> Latest Tweets</h3></div>
+            <md-content class="content-height">
+                <div class="actual-content" ng-class="{visited: row.visited}" ng-repeat = "row in tweets" ng-click="openLink(row)">{{row.Description}}</div>
+            </md-content>
+        </div>
+    </div>
+
+</div>

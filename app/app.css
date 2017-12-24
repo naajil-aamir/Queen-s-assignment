@@ -1,0 +1,92 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+md-content{
+  overflow: inherit !important;
+}
+.header{    /* border-bottom: 2px solid; */
+  -webkit-box-shadow: 0px 14px 47px -17px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 14px 47px -17px rgba(0,0,0,0.75);
+  box-shadow: 0px 14px 47px -17px rgba(0,0,0,0.75);
+}
+.auto-height{
+  height: calc(100% - 100px);
+}
+.menu:before {
+  content: "[";
+}
+.main-header{
+  padding-top: 8px;
+  color: #008AC6;
+  padding-bottom: 8px;
+}
+.actual-content{
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #E0E0E0;
+  outline:none;
+}
+.absolute-positioning{
+  position: absolute !important;
+  top: 5px;
+  right:0px;
+}
+.my-button-icon{
+  position: relative;
+    top: 7px;
+    color: #008AC6;
+}
+.content-header{
+  padding: 16px;
+  margin-bottom: 8px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background-color: #008AC6;
+  color: white;
+}
+.visited{
+  color: #A0A0A0;
+}
+.content-container{
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 32px;
+  padding: 0px;
+  border-radius: 16px;
+  border: 1px solid #E0E0E0;
+  -webkit-box-shadow: 0px 10px 50px -16px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 10px 50px -16px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 50px -16px rgba(0,0,0,0.75);
+}
+.actual-content:hover{
+  color: #008AC6;
+  cursor: pointer;
+}
+.margin-top-0{
+  margin-top: 0px;
+}
+.margin-bottom-0{
+  margin-bottom: 0px
+}
+.spacer-30{
+  width:30px;
+}
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
