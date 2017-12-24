@@ -129,13 +129,7 @@ function follow_links($url) {
 	}
 
 	echo "\n"."]";
-	// Remove an item from the array after we have crawled it.
-	// This prevents infinitely crawling the same page.
-	// array_shift($crawling);
-	// // Follow each link in the crawling array.
-	// foreach ($crawling as $site) {
-	// 	follow_links($site);
-	// }
+	
 }
 // Begin the crawling process by crawling the starting link first.
 follow_links($start);
