@@ -67,7 +67,7 @@ function get_details($url) {
 	}
 	// Return our JSON string containing the title, description, keywords and URL.
 	if (strpos($title, "Trump") !== false) {
-	return '{ "Title": "'.str_replace("\n", "", $title).'", "Description": "'.str_replace("\n", "", $description).'", "Keywords": "'.str_replace("\n", "", $keywords).'", "URL": "'.$url.'"},';
+	return '{ "Title": "'.str_replace("\n", "", $title).'", "Description": "'.str_replace("\n"," ",str_replace("\"", "”", $description)).'", "Keywords": "'.str_replace("\n", "", $keywords).'", "URL": "'.$url.'"}';
 	} else {
 		return null;
 	}
@@ -89,7 +89,7 @@ function follow_links($url) {
 	$linklists = $doc->getElementsByTagName("article");
 	
 	// Loop through all of the links we find.
-	echo "["."\n";
+	echo "[";
 	$doms = "";
 	foreach ($linklists as $link){
 		$doms .=  DOMinnerHTML($link);
@@ -97,8 +97,9 @@ function follow_links($url) {
 	
 	@$doc->loadHTML($doms);
 	$linklist = $doc->getElementsByTagName("a");
-
+	$i = 0;
 	foreach ($linklist as $link) {
+		
 		$l =  $link->getAttribute("href");
 		// Process all of the links we find. This is covered in part 2 and part 3 of the video series.
 		if (substr($l, 0, 1) == "/" && substr($l, 0, 2) != "//") {
@@ -124,13 +125,20 @@ function follow_links($url) {
 				// piped off to an external file using the command line.
 				$details = get_details($l);
 				if($details){
-					echo $details."\n";
+					if($i == 0){
+						++$i;
+						echo "\n".$details;
+					}
+					else{
+					echo ",\n".$details;
+					}
 				}
 		}
 		
+		
 	}
 
-	echo "\n"."]";
+	echo "\n]";
 	// Remove an item from the array after we have crawled it.
 	// This prevents infinitely crawling the same page.
 	// array_shift($crawling);

@@ -68,7 +68,7 @@ function get_details($url) {
 	// Return our JSON string containing the title, description, keywords and URL.
 	
 	if (strpos($title, "Trump") !== false) {
-		return '{ "Title": "'.str_replace("\n", "", "").'", "Description": "'.str_replace("\n", "", $description).'", "Keywords": "'.str_replace("\n", "", $keywords).'", "URL": "'.$url.'"},';
+		return '{ "Title": "'.str_replace("\n", "", "").'", "Description": "'.str_replace("\n", "", $description).'", "Keywords": "'.str_replace("\n", "", $keywords).'", "URL": "'.$url.'"}';
 	} else {
 		return null;
 	}
@@ -88,9 +88,9 @@ function follow_links($url) {
 	@$doc->loadHTML(@file_get_contents($url, false, $context));
 	// Create an array of all of the links we find on the page.
 	// Loop through all of the links we find.
-	echo "["."\n";
+	echo "[";
 	$linklist = $doc->getElementsByTagName("div");
-
+	$i = 0;
 	foreach ($linklist as $link) {
 		$l =  $link->getAttribute("data-permalink-path");
 		// Process all of the links we find. This is covered in part 2 and part 3 of the video series.
@@ -117,10 +117,15 @@ function follow_links($url) {
 				// piped off to an external file using the command line.
 				$details = get_details($l);
 				if($details){
-					echo $details."\n";
+					if($i == 0){
+						$i++;
+						echo "\n".$details;
+					}
+					else{
+						echo ",\n".$details;
+					}
 				}
 		}
-		
 	}
 
 	echo "\n"."]";
